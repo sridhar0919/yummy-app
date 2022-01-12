@@ -3,8 +3,8 @@ var router = express.Router();
 var dotenv = require('dotenv');
 dotenv.config();
 const mongoose = require('mongoose');
-const Food = require('./food');
-const Order = require('./food');
+const { Food } = require('./food');
+const { Order } = require('./food');
 const path = require('path');
 const fs = require('fs');
 

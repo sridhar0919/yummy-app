@@ -8,5 +8,15 @@ const orderSchema = new mongoose.Schema({
   item: Array,
 });
 
-module.exports = mongoose.model('Food', foodSchema);
-module.exports = mongoose.model('Order', orderSchema);
+const food = mongoose.model('Food', foodSchema);
+
+module.exports.saveRequest = function (newFood, callback) {
+  newFood.save(callback);
+};
+
+const order = mongoose.model('Order', orderSchema);
+
+module.exports = {
+  Food: food,
+  Order: order,
+};
