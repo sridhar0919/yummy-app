@@ -7,6 +7,11 @@ const { Food } = require('./food');
 const { Order } = require('./food');
 const path = require('path');
 const fs = require('fs');
+const Razorpay = require('razorpay');
+var instance = new Razorpay({
+  key_id: process.env.RAZORPAY_KEY_ID,
+  key_secret: process.env.RAZORPAY_KEY_SECRET,
+});
 
 mongoose.connect(
   process.env.MONGOURL,
@@ -65,6 +70,20 @@ router.get('/get-orders', async (req, res) => {
   res.send({
     message: 'Orders fetched successfully',
     details: order,
+  });
+});
+
+// create payment order
+router.post('/create/orderId', async (req, res) => {
+  console.log('create orderId request', req.body);
+  var options = {
+    amount: req.body.amount,
+    currency: 'INR',
+    receipt: 'rcp1',
+  };
+  instance.orders.create(options, function (err, order) {
+    console.log(order);
+    res.send({ orderId: order.id });
   });
 });
 
