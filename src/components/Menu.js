@@ -18,7 +18,7 @@ export default function Menu() {
 
   const fetchMenu = () => {
     axios
-      .get('https://food-deliveryapp1.herokuapp.com/get-food')
+      .get('https://yummy-fooddelivery.onrender.com/get-food')
       .then((res) => {
         setPizzaMenu(res.data[0].item[0]);
         setSeafoodMenu(res.data[0].item[1]);
@@ -29,7 +29,7 @@ export default function Menu() {
 
   const placeOrders = (e) => {
     axios
-      .post('https://food-deliveryapp1.herokuapp.com/add-orders', {
+      .post('https://yummy-fooddelivery.onrender.com/add-orders', {
         items: items,
         total: totalAmount,
       })
@@ -43,7 +43,7 @@ export default function Menu() {
   const toggleMenuItems = (e) => {
     if (e.target[0].value == 'pizza') {
       axios
-        .get('https://food-deliveryapp1.herokuapp.com/get-food')
+        .get('https://yummy-fooddelivery.onrender.com/get-food')
         .then((res) => {
           setPizzaMenu(res.data[0].item[0]);
           setSeafoodMenu(null);
@@ -52,7 +52,7 @@ export default function Menu() {
         .catch((err) => console.log(err));
     } else if (e.target[0].value == 'seafood') {
       axios
-        .get('https://food-deliveryapp1.herokuapp.com/get-food')
+        .get('https://yummy-fooddelivery.onrender.com/get-food')
         .then((res) => {
           setPizzaMenu(null);
           setSeafoodMenu(res.data[0].item[1]);
@@ -61,7 +61,7 @@ export default function Menu() {
         .catch((err) => console.log(err));
     } else if (e.target[0].value == 'dessert') {
       axios
-        .get('https://food-deliveryapp1.herokuapp.com/get-food')
+        .get('https://yummy-fooddelivery.onrender.com/get-food')
         .then((res) => {
           setPizzaMenu(null);
           setSeafoodMenu(null);

@@ -12,7 +12,7 @@ export default function About() {
   const [favourite, setFavourite] = useState(null);
   const fetchFavourite = () => {
     axios
-      .get('https://food-deliveryapp1.herokuapp.com/get-food')
+      .get('https://yummy-fooddelivery.onrender.com/get-food')
       .then((res) => {
         setFavourite(res.data[1].item);
       })

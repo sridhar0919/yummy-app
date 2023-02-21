@@ -31,7 +31,7 @@ export default function Addtocart() {
 
   const fetchOrder = () => {
     axios
-      .get('https://food-deliveryapp1.herokuapp.com/get-orders')
+      .get('https://yummy-fooddelivery.onrender.com/get-orders')
       .then((res) => {
         const items = res.data.details[0].item[0].items;
         console.log(res);
@@ -62,7 +62,7 @@ export default function Addtocart() {
     }
 
     axios
-      .post('https://food-deliveryapp1.herokuapp.com/create/orderId', {
+      .post('https://yummy-fooddelivery.onrender.com/create/orderId', {
         amount: totalPayment * 100,
       })
       .then((res) => {
